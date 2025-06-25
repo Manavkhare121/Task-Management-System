@@ -1,0 +1,31 @@
+.loginpage{
+    height:100vh;
+    width:100%;
+    
+}
+.main-part{
+    display: flex;
+    align-items: center;
+    /* top:50%;
+    left:50%;
+    transform: translate(-50%,-50%);
+    position: absolute; */
+    position: relative;
+}
+.left-part{
+    display: flex;
+    flex-direction: column;
+    width:20%;
+    height:100vh;
+    background-color: #44B59B;
+}
+.right-part{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin: 4rem auto;
+    background-color: #fff;
+    width:30%;
+    height:70vh;
+    border-radius: 10px;
+}

@@ -6,7 +6,7 @@ import Profile_icon from '../../assets/profile id.png';
 import task_icon from '../../assets/Task png.png';
 import dashboard_icon from '../../assets/Dashboard icon.png';
 import Logout_icon from '../../assets/Logout.png';
-import { useNavigate } from 'react-router-dom';
+import {useNavigate } from 'react-router-dom';
 
 const Sidebar = ({ extended }) => {
   const navigate = useNavigate(); 
@@ -14,16 +14,16 @@ const Sidebar = ({ extended }) => {
     <div className={`sidebar ${extended ? 'expanded' : 'collapsed'}`}>
       <div className="sidebar-section">
         <div className="first-section">
-          <div className="item log">
-            <img src={dashboard_icon} alt="" />
+          <div className="item log" onClick={() => navigate('/')}>
+            <img src={dashboard_icon}  alt="" />
             {extended && <h1>Dashboard</h1>}
           </div>
           <div className="item log">
             <img src={Profile_icon} alt="" />
             {extended && <h1>Profiles</h1>}
           </div>
-          <div className="item log">
-            <img src={task_icon} alt="" />
+          <div className="item log" onClick={() => navigate('/Task')}>
+            <img src={task_icon} alt=""  />
             {extended && <h1>Task</h1>}
           </div>
           {extended && <hr/>}
@@ -40,7 +40,7 @@ const Sidebar = ({ extended }) => {
             {extended && <h1>Help</h1>}
           </div>
           <div className="item log" onClick={() => navigate('/loginsignup')}>
-            <img src={Logout_icon} alt="" />
+            <img src={Logout_icon} alt="" onClick={() => navigate('/loginsignup')}/>
             {extended &&  <h1>Log-out</h1>}
           </div>
         </div>

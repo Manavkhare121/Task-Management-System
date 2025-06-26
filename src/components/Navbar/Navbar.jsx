@@ -1,18 +1,24 @@
+// Navbar.jsx
 import React, { useState } from 'react';
+import Sidebar from '../../components/Sidebar/Sidebar';
+import Dashboard from '../../components/Dashboard/Dashboard';
+import TaskPage from '../../components/TaskPage/TaskPage';
 import '../../components/Navbar/Navbar.css';
+import { Routes, Route } from 'react-router-dom';
+
 import search_icon from '../../assets/search icon.png';
 import task_icon from '../../assets/Task icon.png';
 import menu_icon from '../../assets/menu icon.png';
 import Arrow_icon from '../../assets/Arrow icon.png';
 import notification_icon from '../../assets/Notification sign.png';
 import profile_icon from '../../assets/leetcode.jpeg';
-import Sidebar from '../../components/Sidebar/Sidebar';
-import Dashboard from '../../components/Dashboard/Dashboard'
+
 const Navbar = () => {
-  const [extended,setExtended] = useState(false);
+  const [extended, setExtended] = useState(false);
 
   return (
-    <div className='main'>
+    <div className="main">
+      {/* Top Nav */}
       <div className="Nav">
         <div className="first-part">
           <div className="Logo-part">
@@ -20,7 +26,7 @@ const Navbar = () => {
               src={menu_icon}
               alt=""
               height="30px"
-              onClick={() => setExtended(!extended)} 
+              onClick={() => setExtended(!extended)}
               style={{ cursor: 'pointer' }}
             />
             <div className="logo">
@@ -41,15 +47,19 @@ const Navbar = () => {
         </div>
       </div>
 
-     <div className={`content-area ${extended ? 'sidebar-expanded' : ''}`}>
-  <Sidebar extended={extended} />
-  <div className="dashboard-wrapper">
-    <Dashboard />
-  </div>
-</div>
       
+      <div className={`content-area ${extended ? 'sidebar-expanded' : ''}`}>
+        <Sidebar extended={extended} />
+        <div className="dashboard-wrapper">
+          <Routes>
+            <Route path="/" element={<Dashboard />} />
+            <Route path="/Task" element={<TaskPage />} />
+          </Routes>
+        </div>
+      </div>
     </div>
   );
 };
 
 export default Navbar;
+

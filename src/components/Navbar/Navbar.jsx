@@ -1,17 +1,19 @@
-// Navbar.jsx
+
 import React, { useState } from 'react';
 import Sidebar from '../../components/Sidebar/Sidebar';
 import Dashboard from '../../components/Dashboard/Dashboard';
 import TaskPage from '../../components/TaskPage/TaskPage';
 import '../../components/Navbar/Navbar.css';
 import { Routes, Route } from 'react-router-dom';
-
+import Profile from '../../components/Profile/Profile'
 import search_icon from '../../assets/search icon.png';
 import task_icon from '../../assets/Task icon.png';
 import menu_icon from '../../assets/menu icon.png';
 import Arrow_icon from '../../assets/Arrow icon.png';
 import notification_icon from '../../assets/Notification sign.png';
 import profile_icon from '../../assets/leetcode.jpeg';
+import Help from '../../components/Help/Help'
+import Signup from '../../components/SignupPage/Signupage'
 
 const Navbar = () => {
   const [extended, setExtended] = useState(false);
@@ -54,6 +56,9 @@ const Navbar = () => {
           <Routes>
             <Route path="/" element={<Dashboard />} />
             <Route path="/Task" element={<TaskPage />} />
+            <Route path="/ProfilePage" element={<Profile/>}/>
+            <Route path='/HelpPage' element={<Help/>}/>
+            <Route path='/SignupPage' element={<Signup/>}/>
           </Routes>
         </div>
       </div>

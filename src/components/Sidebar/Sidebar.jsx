@@ -18,7 +18,7 @@ const Sidebar = ({ extended }) => {
             <img src={dashboard_icon}  alt="" />
             {extended && <h1>Dashboard</h1>}
           </div>
-          <div className="item log">
+          <div className="item log" onClick={() => navigate('/ProfilePage')}>
             <img src={Profile_icon} alt="" />
             {extended && <h1>Profiles</h1>}
           </div>
@@ -35,12 +35,12 @@ const Sidebar = ({ extended }) => {
             <img src={setting_icon} alt="" />
             {extended && <h1>Settings</h1>}
           </div>
-          <div className="item log">
+          <div className="item log" onClick={() => navigate('/HelpPage')}>
             <img src={Help_icon} alt="" />
             {extended && <h1>Help</h1>}
           </div>
           <div className="item log" onClick={() => navigate('/loginsignup')}>
-            <img src={Logout_icon} alt="" onClick={() => navigate('/loginsignup')}/>
+            <img src={Logout_icon} alt=""/>
             {extended &&  <h1>Log-out</h1>}
           </div>
         </div>

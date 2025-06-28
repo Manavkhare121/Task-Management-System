@@ -2,6 +2,7 @@ import './Dashboard.css'
 import Arrow_icon from '../../assets/Arrow icon.png'
 const Dashboard = () => {
   return (
+    <>
     <div className='maincontent'>
       <div className="content-section">
         <div className="above-part">
@@ -30,6 +31,8 @@ const Dashboard = () => {
         </div>
       </div>
     </div>
+    
+    </>
   )
 }
 

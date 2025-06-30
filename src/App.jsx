@@ -3,6 +3,7 @@ import Navbar from './Components/Navbar/Navbar';
 import LoginPage from './components/LoginPage/LoginPage';
 import Signup from './components/SignupPage/Signupage';
 import './App.css';
+import { TaskProvider } from './Context/TaskContext';
 
 function AppWrapper() {
   const location = useLocation();
@@ -26,9 +27,12 @@ function AppWrapper() {
 
 function App() {
   return (
-    <BrowserRouter>
+    <TaskProvider>
+      <BrowserRouter>
       <AppWrapper />
     </BrowserRouter>
+    </TaskProvider>
+    
   );
 }
 

@@ -65,3 +65,23 @@
   font-size: 1rem;
   color: #333;
 }
+.profilescroll {
+  max-height: 300px;
+  overflow-y: auto;
+  width: 100%;
+  margin: 0 auto 1rem auto;
+  padding-right: 0.5rem;
+  scroll-behavior: smooth;
+}
+
+
+.profilescroll::-webkit-scrollbar {
+  width: 6px;
+}
+.profilescroll::-webkit-scrollbar-thumb {
+  background-color: #ccc;
+  border-radius: 5px;
+}
+.hidde{
+    border-radius: 10px;
+}

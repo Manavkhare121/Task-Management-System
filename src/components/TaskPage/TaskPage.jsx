@@ -1,9 +1,11 @@
+// TaskPage.jsx
 import React, { useState, useContext } from 'react';
 import Arrow_icon from '../../assets/Arrow icon.png';
 import './TaskPage.css';
 import { TaskContext } from '../../Context/TaskContext';
 
 const TaskPage = () => {
+  const { tasks, setTasks, profiles } = useContext(TaskContext);
   const [showFields, setShowFields] = useState({
     employee: false,
     task: false,
@@ -18,7 +20,6 @@ const TaskPage = () => {
     description: '',
   });
 
-  const { tasks, setTasks } = useContext(TaskContext);
   const [isEditing, setIsEditing] = useState(false);
   const [editIndex, setEditIndex] = useState(null);
 
@@ -33,9 +34,9 @@ const TaskPage = () => {
 
   const handleAddOrEdit = () => {
     if (isEditing) {
-      const updatedTasks = [...tasks];
-      updatedTasks[editIndex] = taskData;
-      setTasks(updatedTasks);
+      const updated = [...tasks];
+      updated[editIndex] = taskData;
+      setTasks(updated);
       setIsEditing(false);
       setEditIndex(null);
     } else {
@@ -52,17 +53,15 @@ const TaskPage = () => {
   };
 
   const handleDelete = (index) => {
-    const updatedTasks = tasks.filter((_, i) => i !== index);
-    setTasks(updatedTasks);
+    const updated = tasks.filter((_, i) => i !== index);
+    setTasks(updated);
   };
 
   return (
     <>
       <div className='maincontent'>
         <div className="content-section">
-          <div className="above-part">
-            <p>Add Task</p>
-          </div>
+          <div className="above-part"><p>Add Task</p></div>
           <div className="bottom-part">
             {['employee', 'task', 'deadline', 'description'].map((field) => (
               <div className="whole-section" key={field}>
@@ -71,18 +70,36 @@ const TaskPage = () => {
                   <img src={Arrow_icon} alt="" height="5px" />
                 </div>
                 <div className="input">
-                  {showFields[field] && (
-                    <input
-                      type={field === 'deadline' ? 'date' : 'text'}
-                      name={field}
-                      value={taskData[field]}
-                      onChange={handleChange}
-                      placeholder={`Enter ${field}`}
-                    />
-                  )}
-                </div>
+  {showFields[field] && (
+    field === 'employee' ? (
+      <select
+        name="employee"
+        value={taskData.employee}
+        onChange={handleChange}
+      >
+        <option value="">Select Employee</option>
+        {profiles.map((profile, index) => (
+          <option key={index} value={profile.Name}>{profile.Name}</option>
+        ))}
+      </select>
+    ) : (
+      <input
+        type={field === 'deadline' ? 'date' : 'text'}
+        name={field}
+        value={taskData[field]}
+        onChange={handleChange}
+        placeholder={`Enter ${field}`}
+      />
+    )
+  )}
+</div>
               </div>
             ))}
+            <datalist id="employee-list">
+              {profiles.map((p, i) => (
+                <option key={i} value={p.Name} />
+              ))}
+            </datalist>
             <div className="add-icon" onClick={handleAddOrEdit}>
               <p>{isEditing ? 'Update' : 'Add'}</p>
             </div>

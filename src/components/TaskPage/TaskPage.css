@@ -68,8 +68,18 @@
   border-radius: 5px;
   padding: 0.4rem 0.8rem;
   transition: all 0.3s ease;
+  
 }
-
+select{
+    border: none;
+  text-align: center;
+  border-radius: 5px;
+  padding: 0.4rem 1.5rem;
+  transition: all 0.3s ease;
+  }
+select:hover{
+  border: 1px solid black;
+}
 .input input:hover {
   border: 1px solid black;
 }

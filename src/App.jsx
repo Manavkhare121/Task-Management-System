@@ -4,6 +4,7 @@ import LoginPage from './components/LoginPage/LoginPage';
 import Signup from './components/SignupPage/Signupage';
 import './App.css';
 import { TaskProvider } from './Context/TaskContext';
+import { ProfileProvider } from './Context/ProfileContext';
 
 function AppWrapper() {
   const location = useLocation();
@@ -27,11 +28,13 @@ function AppWrapper() {
 
 function App() {
   return (
-    <TaskProvider>
+   <ProfileProvider>
+     <TaskProvider>
       <BrowserRouter>
       <AppWrapper />
     </BrowserRouter>
     </TaskProvider>
+   </ProfileProvider>
     
   );
 }

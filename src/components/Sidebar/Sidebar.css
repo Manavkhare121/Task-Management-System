@@ -88,6 +88,10 @@
     
 
 }
+.sidebar.collapsed .item {
+  justify-content: center;
+ 
+}
 .item.log:hover {
  background-color:#00A9EB;
     border-radius: 10px;

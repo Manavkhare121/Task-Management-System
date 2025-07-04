@@ -1,4 +1,3 @@
-// TaskPage.jsx
 import React, { useState, useContext } from 'react';
 import Arrow_icon from '../../assets/Arrow icon.png';
 import './TaskPage.css';
@@ -6,6 +5,7 @@ import { TaskContext } from '../../Context/TaskContext';
 
 const TaskPage = () => {
   const { tasks, setTasks, profiles } = useContext(TaskContext);
+
   const [showFields, setShowFields] = useState({
     employee: false,
     task: false,
@@ -70,36 +70,31 @@ const TaskPage = () => {
                   <img src={Arrow_icon} alt="" height="5px" />
                 </div>
                 <div className="input">
-  {showFields[field] && (
-    field === 'employee' ? (
-      <select
-        name="employee"
-        value={taskData.employee}
-        onChange={handleChange}
-      >
-        <option value="">Select Employee</option>
-        {profiles.map((profile, index) => (
-          <option key={index} value={profile.Name}>{profile.Name}</option>
-        ))}
-      </select>
-    ) : (
-      <input
-        type={field === 'deadline' ? 'date' : 'text'}
-        name={field}
-        value={taskData[field]}
-        onChange={handleChange}
-        placeholder={`Enter ${field}`}
-      />
-    )
-  )}
-</div>
+                  {showFields[field] && (
+                    field === 'employee' ? (
+                      <select
+                        name="employee"
+                        value={taskData.employee}
+                        onChange={handleChange}
+                      >
+                        <option value="">Select Employee</option>
+                        {profiles.map((profile, index) => (
+                          <option key={index} value={profile.Name}>{profile.Name}</option>
+                        ))}
+                      </select>
+                    ) : (
+                      <input
+                        type={field === 'deadline' ? 'date' : 'text'}
+                        name={field}
+                        value={taskData[field]}
+                        onChange={handleChange}
+                        placeholder={`Enter ${field}`}
+                      />
+                    )
+                  )}
+                </div>
               </div>
             ))}
-            <datalist id="employee-list">
-              {profiles.map((p, i) => (
-                <option key={i} value={p.Name} />
-              ))}
-            </datalist>
             <div className="add-icon" onClick={handleAddOrEdit}>
               <p>{isEditing ? 'Update' : 'Add'}</p>
             </div>

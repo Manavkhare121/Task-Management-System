@@ -20,7 +20,7 @@ const Navbar = () => {
 
   return (
     <div className="main">
-      {/* Top Nav */}
+      
       <div className="Nav">
         <div className="first-part">
           <div className="Logo-part">

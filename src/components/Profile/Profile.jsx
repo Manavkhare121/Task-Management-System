@@ -1,11 +1,13 @@
-// Profile.jsx
-import React, { useState, useContext } from 'react';
+import React, { useState, useEffect } from 'react';
 import Arrow_icon from '../../assets/Arrow icon.png';
 import './Profile.css';
-import { TaskContext } from '../../Context/TaskContext';
 
 const Profile = () => {
-  const { profiles, setProfiles } = useContext(TaskContext);
+  const [profiles, setProfiles] = useState(() => {
+    const stored = localStorage.getItem('profiles');
+    return stored ? JSON.parse(stored) : [];
+  });
+
   const [showFields, setShowFields] = useState({
     Name: false,
     Role: false,
@@ -22,6 +24,11 @@ const Profile = () => {
 
   const [isEditing, setIsEditing] = useState(false);
   const [editIndex, setEditIndex] = useState(null);
+
+  // ⏱ Save profiles to localStorage whenever they change
+  useEffect(() => {
+    localStorage.setItem('profiles', JSON.stringify(profiles));
+  }, [profiles]);
 
   const handleArrowClick = (field) => {
     setShowFields((prev) => ({ ...prev, [field]: !prev[field] }));
@@ -118,5 +125,3 @@ const Profile = () => {
 };
 
 export default Profile;
-
-

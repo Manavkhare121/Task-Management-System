@@ -1,15 +1,25 @@
-import React from 'react';
-import { useState } from 'react';
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import './LoginPage.css';
 import email_icon from '../../assets/Email icon.png';
 import password_icon from '../../assets/Password icon.png';
 import Facebook_icon from '../../assets/Facebook icon.png';
 import Google_icon from '../../assets/google icon.png';
 import Twitter_icon from '../../assets/x icon.png';
-import './LoginPage.css';
-import { useNavigate } from 'react-router-dom';
 
 const LoginPage = () => {
-  const navigate = useNavigate(); 
+  const navigate = useNavigate();
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
+  const handleLogin = () => {
+    if (email.trim() !== '' && password.trim() !== '') {
+      localStorage.setItem('authenticated', 'true');
+      navigate('/');
+    } else {
+      alert('Please enter both email and password');
+    }
+  };
 
   return (
     <div className='loginpage'>
@@ -22,18 +32,28 @@ const LoginPage = () => {
           <h1>Login Here</h1>
           <div className="input-field">
             <img src={email_icon} alt="" height='20px' />
-            <input type="text" placeholder='Email Address' />
+            <input
+              type="text"
+              placeholder='Email Address'
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
           </div>
           <div className="input-field">
             <img src={password_icon} alt="" height="20px" />
-            <input type="text" placeholder='Password' />
+            <input
+              type="password"
+              placeholder='Password'
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
           </div>
           <div className="input-written-section">
             <p>remember me</p>
             <p>Forgot Password?</p>
           </div>
           <div className="buttons">
-            <div className='login'>Login</div>
+            <div className='login' onClick={handleLogin}>Login</div>
           </div>
           <div className="signup-page">
             <p>Don't have an Account?</p>
@@ -52,7 +72,7 @@ const LoginPage = () => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
 export default LoginPage;

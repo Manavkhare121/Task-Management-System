@@ -1,4 +1,4 @@
-.maincontent {
+.maincontent-TaskPage {
   width: 90%;
   margin: 2rem 2.1rem;
   padding: 1rem 2rem;
@@ -8,27 +8,34 @@
   border-top-right-radius: 10px;
 }
 
-.above-part p {
+.above-part-TaskPage p {
   font-size: 2rem;
   font-weight: 500;
 }
 
-.content-section {
+.content-section-TaskPage {
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: 3rem;
   padding: 10px 20px;
 }
 
-.bottom-part {
+.bottom-part-TaskPage {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  flex-wrap: wrap;
   gap: 1rem;
+  flex-wrap: wrap;
 }
 
-.box {
+.whole-section-TaskPage {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.box-Taskage {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -36,52 +43,42 @@
   gap: 1rem;
   background-color: #e9e9e9;
   border-radius: 5px;
-  min-width: 150px;
   transition: all 0.3s ease;
+  flex-wrap: wrap;
 }
 
-.box:hover {
-  background-color: #dcdcdc;
-}
-
-.box img {
-  cursor: pointer;
-}
-
-.box h1 {
+.box-Taskage h1 {
   font-size: 1rem;
   color: #575660;
   font-weight: 500;
+  margin: 0;
 }
 
-.whole-section {
+.box-Taskage input {
+  padding: 5px 10px;
+  border: none;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  flex: 1;
+  background-color: #fff;
+  outline: none;
+}
+
+.box-header-TaskPage {
   display: flex;
   align-items: center;
-  flex-direction: column;
-  gap: 1rem;
+  justify-content: center;
+  gap: 1.5rem;
+}
+
+.box-header-TaskPage img {
+  height: 8px;
+  transition: transform 0.3s ease;
   cursor: pointer;
 }
 
-.input input {
-  border: none;
-  text-align: center;
-  border-radius: 5px;
-  padding: 0.4rem 0.8rem;
-  transition: all 0.3s ease;
-  
-}
-select{
-    border: none;
-  text-align: center;
-  border-radius: 5px;
-  padding: 0.4rem 1.5rem;
-  transition: all 0.3s ease;
-  }
-select:hover{
-  border: 1px solid black;
-}
-.input input:hover {
-  border: 1px solid black;
+.box-header-TaskPage img.rotate {
+  transform: rotate(180deg);
 }
 
 .add-icon {
@@ -91,69 +88,97 @@ select:hover{
   border-radius: 5px;
   border: 1px solid #557F75;
   cursor: pointer;
-  transition: all 0.3s ease;
+  white-space: nowrap;
 }
 
 .add-icon:hover {
   background-color: #389782;
 }
 
-.below-part {
+.below-part-TaskPage {
   width: 90%;
-  margin: 0 auto;
+  margin: 1rem 2.1rem;
   padding: 1rem 2rem;
   background-color: #ffffff;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  border-end-end-radius: 10px;
+  border-bottom-left-radius: 10px;
   display: flex;
+  align-items: center;
   justify-content: space-between;
   flex-wrap: wrap;
-  
-  
 }
 
-.table-header {
-  position: sticky;
-  top: 0;
-  z-index: 2;
-  background-color: white;
-}
-
-.table-menu {
+.table-menu-TaskPage {
   flex: 1;
   text-align: center;
   font-weight: 600;
   font-size: 1rem;
   color: #333;
+  min-width: 100px;
 }
 
-.options-icon {
+.profilescroll-TaskPage {
   display: flex;
   align-items: center;
-  justify-content: center;
-  gap: 1rem;
-}
-
-
-.task-list {
+  flex-direction: column;
+  justify-content: space-evenly;
   max-height: 300px;
   overflow-y: auto;
   width: 100%;
-  margin: 0 auto 1rem auto;
-  padding-right: 0.5rem;
   scroll-behavior: smooth;
-  border-radius: 10px;
+  margin: 0 auto 1rem auto;
 }
 
-
-.task-list::-webkit-scrollbar {
+.profilescroll-TaskPage::-webkit-scrollbar {
   width: 6px;
 }
-.task-list::-webkit-scrollbar-thumb {
+
+.profilescroll-TaskPage::-webkit-scrollbar-thumb {
   background-color: #ccc;
   border-radius: 5px;
 }
 
-
-.hide {
+.hidde {
   border-radius: 10px;
 }
+
+.options-icon {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: center;
+}
+
+.input input {
+  border: none;
+  text-align: center;
+  border-radius: 5px;
+  padding: 0.4rem 0.8rem;
+  transition: all 0.3s ease;
+}
+
+.input input:hover {
+  border: 1px solid black;
+}
+
+select {
+  border: none;
+  text-align: center;
+  border-radius: 5px;
+  padding: 0.4rem 1.5rem;
+  transition: all 0.3s ease;
+}
+
+select:hover {
+  border: 1px solid black;
+}
+.entries{
+  width:80%;
+  display: flex;
+  margin-left: 7rem;
+  gap:3rem;
+  align-items: center;
+  justify-content: space-between;
+}
+
+

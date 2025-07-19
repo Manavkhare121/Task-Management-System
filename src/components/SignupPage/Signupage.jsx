@@ -41,7 +41,7 @@ const Signupage = () => {
               
               <div className="buttons">
                  
-                  <div className='Signup' >SignUp</div>
+                  <div className='Signup' onClick={() => navigate('/loginsignup')} >SignUp</div>
               </div>
               <div className="signup-page">
                   <p>Already have an Account?</p><span onClick={() => navigate('/loginsignup')}>SignIn</span>

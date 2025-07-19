@@ -1,11 +1,12 @@
-import React, { useState, useContext } from 'react';
-import Arrow_icon from '../../assets/Arrow icon.png';
-import './TaskPage.css';
-import { TaskContext } from '../../Context/TaskContext';
+import React, { useState, useContext } from "react";
+import Arrow_icon from "../../assets/Arrow icon.png";
+import "./TaskPage.css";
+import { TaskContext } from "../../Context/TaskContext";
+import { ProfileContext } from "../../Context/ProfileContext";
 
 const TaskPage = () => {
-  const { tasks, setTasks, profiles } = useContext(TaskContext);
-
+  const { tasks, setTasks} = useContext(TaskContext);
+  const { profiles } = useContext(ProfileContext);
   const [showFields, setShowFields] = useState({
     employee: false,
     task: false,
@@ -14,10 +15,10 @@ const TaskPage = () => {
   });
 
   const [taskData, setTaskData] = useState({
-    employee: '',
-    task: '',
-    deadline: '',
-    description: '',
+    employee: "",
+    task: "",
+    deadline: "",
+    description: "",
   });
 
   const [isEditing, setIsEditing] = useState(false);
@@ -42,7 +43,7 @@ const TaskPage = () => {
     } else {
       setTasks([...tasks, taskData]);
     }
-    setTaskData({ employee: '', task: '', deadline: '', description: '' });
+    setTaskData({ employee: "", task: "", deadline: "", description: "" });
     setShowFields({ employee: false, task: false, deadline: false, description: false });
   };
 
@@ -59,32 +60,41 @@ const TaskPage = () => {
 
   return (
     <>
-      <div className='maincontent'>
+      <div className="maincontent">
         <div className="content-section">
-          <div className="above-part"><p>Add Task</p></div>
+          <div className="above-part">
+            <p>Add Task</p>
+          </div>
           <div className="bottom-part">
-            {['employee', 'task', 'deadline', 'description'].map((field) => (
+            {["employee", "task", "deadline", "description"].map((field) => (
               <div className="whole-section" key={field}>
-                <div className="box" onClick={() => handleArrowClick(field)}>
-                  <h1>{field === 'employee' ? 'Select Employee' : field.charAt(0).toUpperCase() + field.slice(1)}</h1>
-                  <img src={Arrow_icon} alt="" height="5px" />
-                </div>
-                <div className="input">
+                <div className={`box ${showFields[field] ? "active" : ""}`}>
+                  <div className="box-header" onClick={() => handleArrowClick(field)}>
+                    <h1>
+                      {field === "employee"
+                        ? "Select Employee"
+                        : field.charAt(0).toUpperCase() + field.slice(1)}
+                    </h1>
+                    <img
+                      src={Arrow_icon}
+                      alt=""
+                      className={`arrow-icon ${showFields[field] ? "rotate" : ""}`}
+                    />
+                  </div>
+
                   {showFields[field] && (
-                    field === 'employee' ? (
-                      <select
-                        name="employee"
-                        value={taskData.employee}
-                        onChange={handleChange}
-                      >
-                        <option value="">Select Employee</option>
+                    field === "employee" ? (
+                      <select name="employee" value={taskData.employee} onChange={handleChange}>
+                        <option>Employee</option>
                         {profiles.map((profile, index) => (
-                          <option key={index} value={profile.Name}>{profile.Name}</option>
+                          <option key={index} value={profile.Name}>
+                            {profile.Name}
+                          </option>
                         ))}
                       </select>
                     ) : (
                       <input
-                        type={field === 'deadline' ? 'date' : 'text'}
+                        type={field === "deadline" ? "date" : "text"}
                         name={field}
                         value={taskData[field]}
                         onChange={handleChange}
@@ -96,39 +106,44 @@ const TaskPage = () => {
               </div>
             ))}
             <div className="add-icon" onClick={handleAddOrEdit}>
-              <p>{isEditing ? 'Update' : 'Add'}</p>
+              <p>{isEditing ? "Update" : "Add"}</p>
             </div>
           </div>
         </div>
       </div>
 
-      <div className="below-part">
-        <div className="table-menu">Task Name</div>
-        <div className="table-menu">Employee Name</div>
-        <div className="table-menu">Deadline</div>
-        <div className="table-menu">Status</div>
-        <div className="table-menu">Options</div>
-      </div>
-
-      <div className="task-list">
+      <div className="below-part-TaskPage">
+       <div className="entries">
+         <div className="table-menu-TaskPage">Task Name</div>
+        <div className="table-menu-TaskPage">Employee Name</div>
+        <div className="table-menu-TaskPage">Deadline</div>
+        <div className="table-menu-TaskPage">Status</div>
+        <div className="table-menu-TaskPage">Options</div>
+       </div>
+        <div className="profilescroll-TaskPage">
         {tasks.map((task, index) => (
-          <div className="below-part hide" key={index}>
-            <div className="table-menu">{task.task}</div>
-            <div className="table-menu">{task.employee}</div>
-            <div className="table-menu">{task.deadline}</div>
-            <div className="table-menu">{task.description}</div>
-            <div className="table-menu">
+          <div className="below-part-TaskPage hidde" key={index}>
+            
+            <div className="table-menu-TaskPage">{task.task}</div>
+            <div className="table-menu-TaskPage">{task.employee}</div>
+            <div className="table-menu-TaskPage">{task.deadline}</div>
+            <div className="table-menu-TaskPage">{task.description}</div>
+            <div className="table-menu-TaskPage">
               <div className="options-icon">
                 <button className="add-icon" onClick={() => handleEdit(index)}>Edit</button>
-                <button className="add-icon" onClick={() => handleDelete(index)} style={{ backgroundColor: '#DC143C' }}>Delete</button>
+                <button className="add-icon" onClick={() => handleDelete(index)} style={{ backgroundColor: "#DC143C" }}>
+                  Delete
+                </button>
               </div>
             </div>
           </div>
         ))}
       </div>
+      </div>
+
+      
     </>
   );
 };
 
 export default TaskPage;
-

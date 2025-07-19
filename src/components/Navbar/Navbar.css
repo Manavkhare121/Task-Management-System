@@ -3,6 +3,7 @@
   width: 100vw;
   display: flex;
   flex-direction: column;
+  
 }
 .Nav {
   display: flex;
@@ -13,7 +14,18 @@
   background-color: #ffff;
   box-shadow: 0px 4px 10px rgba(32, 5, 5, 0.1);
 }
-
+.first-Loginpage{
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  background-color: #e9e9e9;
+  z-index: 999; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .first-part {
   height: 100%;
   width: 100%;

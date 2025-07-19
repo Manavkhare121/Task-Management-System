@@ -1,12 +1,10 @@
-import React, { useState, useEffect } from 'react';
-import Arrow_icon from '../../assets/Arrow icon.png';
-import './Profile.css';
+import React, { useState, useContext, useEffect } from "react";
+import { ProfileContext } from "../../Context/ProfileContext";
+import Arrow_icon from "../../assets/Arrow icon.png";
+import "./Profile.css";
 
 const Profile = () => {
-  const [profiles, setProfiles] = useState(() => {
-    const stored = localStorage.getItem('profiles');
-    return stored ? JSON.parse(stored) : [];
-  });
+  const { profiles, setProfiles } = useContext(ProfileContext); // ✅ From context
 
   const [showFields, setShowFields] = useState({
     Name: false,
@@ -16,19 +14,14 @@ const Profile = () => {
   });
 
   const [ProfileData, setProfileData] = useState({
-    Name: '',
-    Role: '',
-    Number: '',
-    Email_Id: '',
+    Name: "",
+    Role: "",
+    Number: "",
+    Email_Id: "",
   });
 
   const [isEditing, setIsEditing] = useState(false);
   const [editIndex, setEditIndex] = useState(null);
-
-  // ⏱ Save profiles to localStorage whenever they change
-  useEffect(() => {
-    localStorage.setItem('profiles', JSON.stringify(profiles));
-  }, [profiles]);
 
   const handleArrowClick = (field) => {
     setShowFields((prev) => ({ ...prev, [field]: !prev[field] }));
@@ -49,7 +42,7 @@ const Profile = () => {
     } else {
       setProfiles([...profiles, ProfileData]);
     }
-    setProfileData({ Name: '', Role: '', Number: '', Email_Id: '' });
+    setProfileData({ Name: "", Role: "", Number: "", Email_Id: "" });
     setShowFields({ Name: false, Role: false, Number: false, Email_Id: false });
   };
 
@@ -66,17 +59,27 @@ const Profile = () => {
 
   return (
     <>
-      <div className='maincontent'>
+      <div className="maincontent">
         <div className="content-section">
-          <div className="above-part"><p>Add Profile</p></div>
+          <div className="above-part">
+            <p>Add Profile</p>
+          </div>
           <div className="bottom-part">
-            {['Name', 'Role', 'Number', 'Email_Id'].map((field) => (
+            {["Name", "Role", "Number", "Email_Id"].map((field) => (
               <div className="whole-section" key={field}>
-                <div className="box" onClick={() => handleArrowClick(field)}>
-                  <h1>{field}</h1>
-                  <img src={Arrow_icon} alt="" height="5px" />
-                </div>
-                <div className="input">
+                <div className={`box ${showFields[field] ? "active" : ""}`} >
+                  <div className="box-header" onClick={() => handleArrowClick(field)}>
+                    <h1 >{field}</h1>
+                    <img
+                      src={Arrow_icon}
+                      alt=""
+                      className={`arrow-icon ${
+                        showFields[field] ? "rotate" : ""
+                      }`}
+                      
+                      
+                    />
+                  </div>
                   {showFields[field] && (
                     <input
                       type="text"
@@ -90,21 +93,21 @@ const Profile = () => {
               </div>
             ))}
             <div className="add-icon" onClick={handleAddOrEdit}>
-              <p>{isEditing ? 'Update' : 'Add'}</p>
+              <p>{isEditing ? "Update" : "Add"}</p>
             </div>
           </div>
         </div>
       </div>
 
       <div className="below-part">
-        <div className="table-menu">Employee Name</div>
+        <div className="headings">
+          <div className="table-menu">Employee Name</div>
         <div className="table-menu">Role</div>
         <div className="table-menu">Phone Number</div>
         <div className="table-menu">Email Id</div>
         <div className="table-menu">Options</div>
-      </div>
-
-      <div className="profilescroll">
+        </div>
+        <div className="profilescroll">
         {profiles.map((profile, index) => (
           <div className="below-part hidde" key={index}>
             <div className="table-menu">{profile.Name}</div>
@@ -113,13 +116,24 @@ const Profile = () => {
             <div className="table-menu">{profile.Email_Id}</div>
             <div className="table-menu">
               <div className="options-icon">
-                <button className="add-icon" onClick={() => handleEdit(index)}>Edit</button>
-                <button className="add-icon" onClick={() => handleDelete(index)} style={{ backgroundColor: '#DC143C' }}>Delete</button>
+                <button className="add-icon" onClick={() => handleEdit(index)}>
+                  Edit
+                </button>
+                <button
+                  className="add-icon"
+                  onClick={() => handleDelete(index)}
+                  style={{ backgroundColor: "#DC143C" }}
+                >
+                  Delete
+                </button>
               </div>
             </div>
           </div>
         ))}
       </div>
+      </div>
+
+      
     </>
   );
 };

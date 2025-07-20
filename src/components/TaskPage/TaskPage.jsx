@@ -5,7 +5,7 @@ import { TaskContext } from "../../Context/TaskContext";
 import { ProfileContext } from "../../Context/ProfileContext";
 
 const TaskPage = () => {
-  const { tasks, setTasks} = useContext(TaskContext);
+  const { tasks, setTasks } = useContext(TaskContext);
   const { profiles } = useContext(ProfileContext);
   const [showFields, setShowFields] = useState({
     employee: false,
@@ -34,6 +34,11 @@ const TaskPage = () => {
   };
 
   const handleAddOrEdit = () => {
+    if (!taskData.employee || taskData.employee === "Employee") {
+      alert("Please select an employee before assigning the task.");
+      return;
+    }
+
     if (isEditing) {
       const updated = [...tasks];
       updated[editIndex] = taskData;
@@ -43,6 +48,7 @@ const TaskPage = () => {
     } else {
       setTasks([...tasks, taskData]);
     }
+
     setTaskData({ employee: "", task: "", deadline: "", description: "" });
     setShowFields({ employee: false, task: false, deadline: false, description: false });
   };
@@ -82,8 +88,8 @@ const TaskPage = () => {
                     />
                   </div>
 
-                  {showFields[field] && (
-                    field === "employee" ? (
+                  {showFields[field] &&
+                    (field === "employee" ? (
                       <select name="employee" value={taskData.employee} onChange={handleChange}>
                         <option>Employee</option>
                         {profiles.map((profile, index) => (
@@ -100,11 +106,11 @@ const TaskPage = () => {
                         onChange={handleChange}
                         placeholder={`Enter ${field}`}
                       />
-                    )
-                  )}
+                    ))}
                 </div>
               </div>
             ))}
+
             <div className="add-icon" onClick={handleAddOrEdit}>
               <p>{isEditing ? "Update" : "Add"}</p>
             </div>
@@ -113,37 +119,41 @@ const TaskPage = () => {
       </div>
 
       <div className="below-part-TaskPage">
-       <div className="entries">
-         <div className="table-menu-TaskPage">Task Name</div>
-        <div className="table-menu-TaskPage">Employee Name</div>
-        <div className="table-menu-TaskPage">Deadline</div>
-        <div className="table-menu-TaskPage">Status</div>
-        <div className="table-menu-TaskPage">Options</div>
-       </div>
+        <div className="entries">
+          <div className="table-menu-TaskPage">Task Name</div>
+          <div className="table-menu-TaskPage">Employee Name</div>
+          <div className="table-menu-TaskPage">Deadline</div>
+          <div className="table-menu-TaskPage">Status</div>
+          <div className="table-menu-TaskPage">Options</div>
+        </div>
         <div className="profilescroll-TaskPage">
-        {tasks.map((task, index) => (
-          <div className="below-part-TaskPage hidde" key={index}>
-            
-            <div className="table-menu-TaskPage">{task.task}</div>
-            <div className="table-menu-TaskPage">{task.employee}</div>
-            <div className="table-menu-TaskPage">{task.deadline}</div>
-            <div className="table-menu-TaskPage">{task.description}</div>
-            <div className="table-menu-TaskPage">
-              <div className="options-icon">
-                <button className="add-icon" onClick={() => handleEdit(index)}>Edit</button>
-                <button className="add-icon" onClick={() => handleDelete(index)} style={{ backgroundColor: "#DC143C" }}>
-                  Delete
-                </button>
+          {tasks.map((task, index) => (
+            <div className="below-part-TaskPage hidde" key={index}>
+              <div className="table-menu-TaskPage">{task.task}</div>
+              <div className="table-menu-TaskPage">{task.employee}</div>
+              <div className="table-menu-TaskPage">{task.deadline}</div>
+              <div className="table-menu-TaskPage">{task.description}</div>
+              <div className="table-menu-TaskPage">
+                <div className="options-icon">
+                  <button className="add-icon" onClick={() => handleEdit(index)}>
+                    Edit
+                  </button>
+                  <button
+                    className="add-icon"
+                    onClick={() => handleDelete(index)}
+                    style={{ backgroundColor: "#DC143C" }}
+                  >
+                    Delete
+                  </button>
+                </div>
               </div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
-      </div>
-
-      
     </>
   );
 };
 
 export default TaskPage;
+

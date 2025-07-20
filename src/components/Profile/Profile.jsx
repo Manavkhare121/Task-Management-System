@@ -4,7 +4,7 @@ import Arrow_icon from "../../assets/Arrow icon.png";
 import "./Profile.css";
 
 const Profile = () => {
-  const { profiles, setProfiles } = useContext(ProfileContext); // ✅ From context
+  const { profiles, setProfiles } = useContext(ProfileContext); 
 
   const [showFields, setShowFields] = useState({
     Name: false,
@@ -64,7 +64,7 @@ const Profile = () => {
           <div className="above-part">
             <p>Add Profile</p>
           </div>
-          <div className="bottom-part">
+          <div className="bottom-part-Profile">
             {["Name", "Role", "Number", "Email_Id"].map((field) => (
               <div className="whole-section" key={field}>
                 <div className={`box ${showFields[field] ? "active" : ""}`} >
@@ -76,9 +76,7 @@ const Profile = () => {
                       className={`arrow-icon ${
                         showFields[field] ? "rotate" : ""
                       }`}
-                      
-                      
-                    />
+                      />
                   </div>
                   {showFields[field] && (
                     <input

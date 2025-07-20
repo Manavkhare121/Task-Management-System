@@ -19,14 +19,15 @@
   gap: 3rem;
   padding: 10px 20px;
 }
-
-.bottom-part-TaskPage {
+.bottom-part
+{
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 1rem;
-  flex-wrap: wrap;
 }
+
+
 
 .whole-section-TaskPage {
   flex: 1;
@@ -127,7 +128,6 @@
   overflow-y: auto;
   width: 100%;
   scroll-behavior: smooth;
-  margin: 0 auto 1rem auto;
 }
 
 .profilescroll-TaskPage::-webkit-scrollbar {

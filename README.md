@@ -1,12 +1,67 @@
-# React + Vite
+Perfect! 🚀 Tumhare **Task Management System** project ke liye ek **fancy aur professional README.md** ready karta hoon jo GitHub par bahut premium lagega. Ye README tumhare project ke features, setup steps, tech stack aur screenshots section ko showcase karega.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+---
 
-Currently, two official plugins are available:
+# 📌 Task Management System
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+🚀 A modern **Task Management System** built with **React.js** and beautifully designed in **Figma**, featuring an intuitive **Admin Panel**, **Profile Management**, and **Task Handling** functionality.
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## ✨ Features
+
+✅ **Admin Dashboard** – Manage tasks, profiles, and monitor system activity
+✅ **Profile Management** – Add and manage employee/user profiles seamlessly
+✅ **Task Management** – Create, update, delete, and track tasks with live status updates
+✅ **Responsive UI** – Designed in **Figma** and implemented with **React.js**
+✅ **Real-time Updates** – Task counts and status update instantly (Dashboard + Task Page)
+✅ **Authentication Flow** – Secure Login/Signup with route protection
+✅ **Clean UI/UX** – Sidebar, Navbar, collapsible input boxes, and live task statistics
+
+---
+
+## 🛠️ Tech Stack
+
+* 🎨 **UI Design:** Figma
+* ⚛️ **Frontend:** React.js (with Context API for state management)
+* 💅 **Styling:** TailwindCSS + shadcn/ui components
+* 🧩 **Icons & Charts:** Lucide-React, Recharts
+* 🔒 **Authentication:** Local Storage-based login/signup flow
+* ⚡ **Other:** Framer Motion (animations), React Router (navigation)
+
+
+---
+
+## 📸 Screenshots
+
+### 🔹 Dashboard
+![Dashboard Screenshot](./src/assets/Dashboard.png)
+
+
+### 🔹 Task Page
+
+![Task Page Screenshot](./src/assets/AddTask.png)
+
+### 🔹 Profile Page
+
+![Profile Page Screenshot](./src/assets/Profile.png)
+
+
+---
+
+## 📌 Roadmap
+
+* [ ] Add calendar-based task deadlines
+* [ ] Implement dark mode 🌙
+* [ ] Integrate backend (Node.js + MongoDB)
+* [ ] Add notifications/reminders
+
+---
+
+
+
+🔥 *A simple yet powerful Task Management System designed with Figma & built with React.js for modern productivity!*
+
+---
+
+

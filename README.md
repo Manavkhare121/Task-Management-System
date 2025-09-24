@@ -1,4 +1,3 @@
-Perfect! 🚀 Tumhare **Task Management System** project ke liye ek **fancy aur professional README.md** ready karta hoon jo GitHub par bahut premium lagega. Ye README tumhare project ke features, setup steps, tech stack aur screenshots section ko showcase karega.
 
 ---
 
@@ -45,7 +44,6 @@ Perfect! 🚀 Tumhare **Task Management System** project ke liye ek **fancy aur 
 ### 🔹 Profile Page
 
 ![Profile Page Screenshot](./src/assets/Profile.png)
-
 
 ---
 

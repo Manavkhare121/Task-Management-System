@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
-import Navbar from './components/Navbar/Navbar.jsx';
+import Navbar from './components/Navbar/Navbar.jsx';//issue resolve
 import LoginPage from './components/LoginPage/LoginPage.jsx';
 import Signup from './components/SignupPage/Signupage.jsx';
 import './App.css';

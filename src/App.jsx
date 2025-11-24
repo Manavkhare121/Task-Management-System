@@ -1,11 +1,11 @@
 import { useEffect } from 'react';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
-import Navbar from './Components/Navbar/Navbar';
-import LoginPage from './components/LoginPage/LoginPage';
-import Signup from './components/SignupPage/Signupage';
+import Navbar from './Components/Navbar/Navbar.jsx';
+import LoginPage from './components/LoginPage/LoginPage.jsx';
+import Signup from './components/SignupPage/Signupage.jsx';
 import './App.css';
-import { TaskProvider } from './Context/TaskContext';
-import { ProfileProvider } from './Context/ProfileContext';
+import { TaskProvider } from './Context/TaskContext.jsx';
+import { ProfileProvider } from './Context/ProfileContext.jsx';
 
 function ProtectedRoute({ children }) {
   const isAuthenticated = localStorage.getItem('authenticated') === 'true';

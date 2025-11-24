@@ -1,8 +1,8 @@
 import React, { useState, useContext } from "react";
 import Arrow_icon from "../../assets/Arrow icon.png";
 import "./TaskPage.css";
-import { TaskContext } from "../../Context/TaskContext";
-import { ProfileContext } from "../../Context/ProfileContext";
+import { TaskContext } from "../../Context/TaskContext.jsx";
+import { ProfileContext } from "../../Context/ProfileContext.jsx";
 
 const TaskPage = () => {
   const { tasks, setTasks } = useContext(TaskContext);

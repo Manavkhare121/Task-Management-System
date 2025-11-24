@@ -1,7 +1,7 @@
 import "./Dashboard.css";
 
 import { useContext, useEffect, useState } from "react";
-import { TaskContext } from "../../Context/TaskContext";
+import { TaskContext } from "../../Context/TaskContext.jsx";
 
 const Dashboard = () => {
   const { tasks } = useContext(TaskContext);
